@@ -1,0 +1,52 @@
+.flowchart-container {
+  position: relative;
+
+  text {
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+.flowchart-toolbar {
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid #dfdfdf;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.flowchart-toolbar-item {
+  width: 100px;
+  height: 60px;
+}
+
+.flowchart-svg {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  background-color: #f3f3f3;
+}
+
+.circle {
+  stroke-width: 1px;
+  stroke: #bbbbbb;
+  cursor: crosshair;
+  opacity: 0;
+  color: white;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.g {
+  &:hover {
+    .circle {
+      opacity: 1;
+    }
+  }
+}

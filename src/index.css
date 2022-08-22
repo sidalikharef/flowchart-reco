@@ -1,0 +1,186 @@
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+.flowchart-container {
+  position: relative;
+  width: 100% !important;
+  height: 85vh !important;
+}
+.flowchart-container text {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.flowchart-toolbar {
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid #dfdfdf;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+}
+.flowchart-toolbar-item {
+  width: 80px;
+  height: 40px;
+}
+.flowchart-svg {
+  height: 100%;
+  width: 100%;
+  float: right;
+  border: 1px solid #dfdfdf;
+  background-color: #f3f3f3;
+}
+.flowchart-svg-start{
+  height: 100%;
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  color: white !important;
+}
+.flowchart-svg-end {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  background-color: #5e0202 !important;
+  color: white !important;
+}
+.circle {
+  fill: white;
+  stroke-width: 1px;
+  stroke: #bbbbbb;
+  cursor: crosshair;
+  opacity: 0;
+}
+.circle:hover {
+  opacity: 1;
+}
+.g:hover .circle {
+  opacity: 1;
+}
+.backgrounds{
+  background-color: white;
+  height: 100vh;
+  width: calc(100vw);
+}
+.header{
+  background-color: gainsboro;
+  width: 95%;
+  height: 8%;
+  padding-top: 15px;
+  margin: 0 auto;
+}
+.NavLeftSide{
+  display: flex;
+  float: left;
+  margin-left: 10px;
+}
+.file{
+  border: none;
+
+}
+.NavRightSide{
+  display: flex !important;
+  float: right;
+  cursor: default !important;
+
+}
+.btn-start{
+  background-color: #2d4b5a !important;
+  color: white !important;
+  margin-right:  10px;
+  border-radius: 25px !important;
+  padding:0 15px;
+}
+.btn-stop{
+  background-color: #5e0202 !important;
+  color: white !important;
+  margin-right:  10px;
+  border-radius: 25px !important;
+  padding:0 15px;
+}
+.body{
+  background-color: white;
+  width: 95%;
+  height: 85%;
+  border: #282c34 solid 1px;
+  margin: 0 auto;
+}
+.status{
+  position: absolute;
+  bottom:0 !important;
+  height: 70px;
+  width: 100%;
+  border-top: #282c34 solid 1px;
+}
+.bottomBody{
+  position: absolute;
+  float: right;
+  width: 95%;
+  height: 5%;
+  border: #282c34 solid 1px;
+
+}
+.btn-Status{
+  background-color: gainsboro!important;
+  padding: 5px 20px!important;
+  float: right;
+}
+.handle-bar .handle-bar_drag {
+  width: 2px !important;
+  height: 85vh !important;
+}
+.collapsible .content {
+  padding: 6px;
+}
+.collapsible .header {
+  padding: 6px;
+  cursor: pointer;
+}
+.rows{
+  display: flex !important;
+  cursor: pointer;
+
+}
+.iconArrow{
+  margin-top: 3px;
+  margin-right: 5px;
+}
+.padinrow{
+  margin-left: 30px;
+}
+.fileClick{
+  position: absolute;
+  background-color: white;
+  color: black;
+  width: 12%;
+  padding:5px;
+  z-index: 99;
+  list-style: none;
+
+}
+.clickedd{
+  background-color: white !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border: none !important;
+}
+.navButton{
+  border: none;
+ width: 100%;
+}
+.navButton:hover{
+  background-color: aliceblue;
+}
+.fileNav{
+  border:none !important
+}
+.NAVsbutton{
+  border: none;
+  width: 100%;
+  background-color: white;
+}
+.NAVsbutton:hover{
+  background-color: aliceblue;
+}
+/*# sourceMappingURL=index.css.map */
