@@ -886,15 +886,8 @@ const Flowchart = forwardRef(
           {isExpandedos ? (
             <div className="content">
               {Sub2.map((sub) => {
-                <div
-                  className="rows padinrow"
-                  onClick={(event) =>
-                    handleToolbarMouseDown("operation", event)
-                  }
-                >
-                  <BsFillFolderFill className="iconArrow" />
-                  {sub.title}
-                </div>
+                console.log(sub.title)
+                console.log(sub)
               })}
             </div>
           ) : (
