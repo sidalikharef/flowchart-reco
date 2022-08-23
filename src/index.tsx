@@ -22,6 +22,7 @@ import {
   NodeType,
   Point,
   SelectingInfo,
+  listData,
 } from "./schema";
 import {
   calcCorners,
@@ -848,8 +849,10 @@ const Flowchart = forwardRef(
     function statusChanger() {
       setStatus(!statues);
     }
-    const NewDAta = {
-      ProjectName: "ProjectOne",
+
+    const NewDAta: listData = {
+      projectName: "ProjectOne",
+      Sub1: [],
       Sub2: [
         { id: 0, title: "producer_1", type: "operation", x: 0, y: 0 },
         { id: 1, title: "producer_2", type: "operation", x: 0, y: 0 },
@@ -858,7 +861,7 @@ const Flowchart = forwardRef(
       ],
     };
 
-    function InnerCollapsible() {
+    function InnerCollapsible({ Sub1, Sub2 }: listData) {
       const [isExpandedos, setExpandedos] = useState(true);
       function handleOnClick() {
         setExpandedos(!isExpandedos);
@@ -870,25 +873,29 @@ const Flowchart = forwardRef(
             {isExpandedos ? (
               <div className="rows">
                 <BsChevronDoubleDown className="iconArrow" />
-                <div>SUB1</div>
+                <div>SUB2</div>
               </div>
             ) : (
               <div className="rows">
                 <BsChevronDoubleRight className="iconArrow" />
-                <div>SUB1</div>
+                <div>SUB2</div>
               </div>
             )}
           </div>
 
           {isExpandedos ? (
             <div className="content">
-              <div
-                className="rows padinrow"
-                onClick={(event) => handleToolbarMouseDown("operation", event)}
-              >
-                <BsFillFolderFill className="iconArrow" />
-                ITEM ONE
-              </div>
+              {Sub2.map((sub) => {
+                <div
+                  className="rows padinrow"
+                  onClick={(event) =>
+                    handleToolbarMouseDown("operation", event)
+                  }
+                >
+                  <BsFillFolderFill className="iconArrow" />
+                  {sub.title}
+                </div>
+              })}
             </div>
           ) : (
             <div></div>
@@ -906,44 +913,44 @@ const Flowchart = forwardRef(
       <>
         <div className="backgrounds">
           <div className="header">
-          <div className="NavLeftSide">
-            <div>
-              {FileClicked ? (
-                <Button bsPrefix={"btn clickedd"} onClick={FileChanger}>
-                  filez
-                </Button>
-              ) : (
-                <Button variant="file" onClick={FileChanger}>
-                  file
-                </Button>
-              )}
+            <div className="NavLeftSide">
+              <div>
+                {FileClicked ? (
+                  <Button bsPrefix={"btn clickedd"} onClick={FileChanger}>
+                    filez
+                  </Button>
+                ) : (
+                  <Button variant="file" onClick={FileChanger}>
+                    file
+                  </Button>
+                )}
 
-              {FileClicked ? (
-                <ul className="fileClick">
-                  <li className="navbutton">
-                    <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
-                      New Project
-                    </Button>{" "}
-                  </li>
-                  <li className="navbutton">
-                    <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
-                      New Sub
-                    </Button>{" "}
-                  </li>
-                  <li className="navbutton">
-                    <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
-                      New Operation
-                    </Button>{" "}
-                  </li>
-                </ul>
-              ) : (
-                <div></div>
-              )}
+                {FileClicked ? (
+                  <ul className="fileClick">
+                    <li className="navbutton">
+                      <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
+                        New Project
+                      </Button>{" "}
+                    </li>
+                    <li className="navbutton">
+                      <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
+                        New Sub
+                      </Button>{" "}
+                    </li>
+                    <li className="navbutton">
+                      <Button bsPrefix={"NAVsbutton"} onClick={FileChanger}>
+                        New Operation
+                      </Button>{" "}
+                    </li>
+                  </ul>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+              <div>
+                <Button variant="Help">Help</Button>
+              </div>
             </div>
-            <div>
-              <Button variant="Help">Help</Button>
-            </div>
-          </div>
             <div className="NavRightSide">
               <div
                 onMouseDown={(event) => handleToolbarMouseDown("start", event)}
@@ -988,18 +995,18 @@ const Flowchart = forwardRef(
                           {isExpanded ? (
                             <div className="rows">
                               <BsChevronDoubleDown className="iconArrow" />
-                              <div>{NewDAta.ProjectName}</div>
+                              <div>{NewDAta.projectName}</div>
                             </div>
                           ) : (
                             <div className="rows">
                               <BsChevronDoubleRight className="iconArrow" />
-                              <div>{NewDAta.ProjectName}</div>
+                              <div>{NewDAta.projectName}</div>
                             </div>
                           )}
                         </div>
                         <div {...getCollapseProps()}>
                           <div className="content">
-                            <InnerCollapsible />
+                            <InnerCollapsible projectName={NewDAta.projectName} Sub1={NewDAta.Sub1} Sub2={NewDAta.Sub2} />
                           </div>
                         </div>
                       </div>

@@ -11,6 +11,11 @@ export interface NodeData {
     width?: number;
     height?: number;
 }
+export interface listData {
+    projectName: string | (() => string);
+    Sub1: Array<NodeData>;
+    Sub2: Array<NodeData>;
+}
 export interface ConnectionData {
     type: "success" | "fail";
     source: {
