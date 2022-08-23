@@ -885,7 +885,24 @@ const Flowchart = forwardRef(
 
           {isExpandedos ? (
             <div className="content">
-              {Sub2.map((sub, index) => {
+              {
+                Sub2.map((sub, i) => {
+                  console.log("Entered");
+                  // Return the element. Also pass key
+                  return (
+                    <div key={i}>
+                    <div
+                      className="rows padinrow"
+                      onClick={(event) =>
+                        handleToolbarMouseDown("operation", event)
+                      }
+                    >
+                      <BsFillFolderFill className="iconArrow" />
+                      {sub.title}
+                    </div>
+                  </div>
+                  )
+               })/*Sub2.map((sub, index) => {
                 <div key={index}>
                   <div
                     className="rows padinrow"
@@ -897,7 +914,7 @@ const Flowchart = forwardRef(
                     {sub.title}
                   </div>
                 </div>;
-              })}
+              })*/}
             </div>
           ) : (
             <div></div>
