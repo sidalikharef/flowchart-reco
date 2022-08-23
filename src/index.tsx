@@ -885,19 +885,18 @@ const Flowchart = forwardRef(
 
           {isExpandedos ? (
             <div className="content">
-              {Sub2.map((sub) => {
-                  <div>
+              {Sub2.map((sub, index) => {
+                <div key={index}>
                   <div
-                  className="rows padinrow"
-                  onClick={(event) =>
-                    handleToolbarMouseDown("operation", event)
-                  }
-                >
-                  <BsFillFolderFill className="iconArrow" />
-                  {sub.title}
-                </div>
-                {console.log(sub.title)}
-                </div>
+                    className="rows padinrow"
+                    onClick={(event) =>
+                      handleToolbarMouseDown("operation", event)
+                    }
+                  >
+                    <BsFillFolderFill className="iconArrow" />
+                    {sub.title}
+                  </div>
+                </div>;
               })}
             </div>
           ) : (
@@ -1009,7 +1008,11 @@ const Flowchart = forwardRef(
                         </div>
                         <div {...getCollapseProps()}>
                           <div className="content">
-                            <InnerCollapsible projectName={NewDAta.projectName} Sub1={NewDAta.Sub1} Sub2={NewDAta.Sub2} />
+                            <InnerCollapsible
+                              projectName={NewDAta.projectName}
+                              Sub1={NewDAta.Sub1}
+                              Sub2={NewDAta.Sub2}
+                            />
                           </div>
                         </div>
                       </div>
