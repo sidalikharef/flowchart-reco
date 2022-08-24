@@ -857,7 +857,7 @@ const Flowchart = forwardRef(
       Subs: [
         {
           SubName: "Sub1",
-          SubData: [{ id: 0, title: "", type: "operation", x: 0, y: 0 }],
+          SubData: [],
         },
         {
           SubName: "Sub2",
@@ -896,7 +896,8 @@ const Flowchart = forwardRef(
                 </div>
                 {isExpandedos ? (
                   <div className="content">
-                    {SubData.map((sub, i) => {
+                    { SubData ? (
+                    SubData.map((sub, i) => {
                       console.log("Entered");
                       // Return the element. Also pass key
                       return (
@@ -912,7 +913,7 @@ const Flowchart = forwardRef(
                           </div>
                         </div>
                       );
-                    })}
+                    })):<div></div>}
                   </div>
                 ) : (
                   <div></div>

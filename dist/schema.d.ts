@@ -42,7 +42,7 @@ export interface projectScheme {
 }
 export interface SubsScheme {
     SubName: string;
-    SubData: Array<NodeData>;
+    SubData: Array<NodeData> | null;
 }
 export declare type ConnectorPosition = "left" | "right" | "top" | "bottom";
 export declare type NodeType = "start" | "end" | "operation" | "decision" | "collector";

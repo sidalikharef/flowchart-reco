@@ -48,7 +48,7 @@ export interface projectScheme{
 }
 export interface SubsScheme{
   SubName:string,
-  SubData:Array<NodeData>
+  SubData:Array<NodeData> | null
 }
 export type ConnectorPosition = "left" | "right" | "top" | "bottom";
 export type NodeType = "start" | "end" | "operation" | "decision" | "collector";
