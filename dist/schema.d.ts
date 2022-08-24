@@ -36,6 +36,14 @@ export interface SelectingInfo {
     start: Point;
     end: Point;
 }
+export interface projectScheme {
+    ProjectName: string;
+    Subs: Array<SubsScheme>;
+}
+export interface SubsScheme {
+    SubName: string;
+    SubData: Array<NodeData>;
+}
 export declare type ConnectorPosition = "left" | "right" | "top" | "bottom";
 export declare type NodeType = "start" | "end" | "operation" | "decision" | "collector";
 export interface FlowchartProps {

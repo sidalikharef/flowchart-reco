@@ -42,7 +42,14 @@ export interface SelectingInfo {
   start: Point;
   end: Point;
 }
-
+export interface projectScheme{
+  ProjectName:string,
+  Subs:Array<SubsScheme>
+}
+export interface SubsScheme{
+  SubName:string,
+  SubData:Array<NodeData>
+}
 export type ConnectorPosition = "left" | "right" | "top" | "bottom";
 export type NodeType = "start" | "end" | "operation" | "decision" | "collector";
 

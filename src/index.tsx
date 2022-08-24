@@ -23,6 +23,7 @@ import {
   Point,
   SelectingInfo,
   listData,
+  projectScheme,
 } from "./schema";
 import {
   calcCorners,
@@ -850,78 +851,81 @@ const Flowchart = forwardRef(
       setStatus(!statues);
     }
 
-    const NewDAta: listData = {
-      projectName: "ProjectOne",
-      Sub1: [],
-      Sub2: [
-        { id: 0, title: "producer_1", type: "operation", x: 0, y: 0 },
-        { id: 1, title: "producer_2", type: "operation", x: 0, y: 0 },
-        { id: 2, title: "consumer_1", type: "operation", x: 0, y: 0 },
-        { id: 3, title: "consumer_2", type: "operation", x: 0, y: 0 },
+    const NewDAta: projectScheme = {
+      ProjectName: "ProjectOne",
+      Subs: [
+        {
+          SubName: "Sub1",
+          SubData: [{ id: 0, title: "", type: "operation", x: 0, y: 0 }],
+        },
+        {
+          SubName: "Sub2",
+          SubData: [
+            { id: 0, title: "producer_1", type: "operation", x: 0, y: 0 },
+            { id: 1, title: "producer_2", type: "operation", x: 0, y: 0 },
+            { id: 2, title: "consumer_1", type: "operation", x: 0, y: 0 },
+            { id: 3, title: "consumer_2", type: "operation", x: 0, y: 0 },
+          ],
+        },
       ],
     };
 
-    function InnerCollapsible({ Sub1, Sub2 }: listData) {
+    function InnerCollapsible({ Subs }: projectScheme) {
       const [isExpandedos, setExpandedos] = useState(true);
       function handleOnClick() {
         setExpandedos(!isExpandedos);
         console.log("here");
       }
       return (
-        <div className="collapsible">
-          <div className="header" onClick={handleOnClick}>
-            {isExpandedos ? (
-              <div className="rows">
-                <BsChevronDoubleDown className="iconArrow" />
-                <div>SUB2</div>
-              </div>
-            ) : (
-              <div className="rows">
-                <BsChevronDoubleRight className="iconArrow" />
-                <div>SUB2</div>
-              </div>
-            )}
-          </div>
-
-          {isExpandedos ? (
-            <div className="content">
-              {
-                Sub2.map((sub, i) => {
-                  console.log("Entered");
-                  // Return the element. Also pass key
-                  return (
-                    <div key={i}>
-                    <div
-                      className="rows padinrow"
-                      onClick={(event) =>
-                        handleToolbarMouseDown("operation", event)
-                      }
-                    >
-                      <BsFillFolderFill className="iconArrow" />
-                      {sub.title}
+        <div>
+          {Subs.map((sub, i) => {
+            console.log("Entered");
+            return(
+            <div key={i}>
+              <div className="collapsible">
+                <div className="header" onClick={handleOnClick}>
+                  {isExpandedos ? (
+                    <div className="rows">
+                      <BsChevronDoubleDown className="iconArrow" />
+                      <div>{sub.SubName}</div>
                     </div>
+                  ) : (
+                    <div className="rows">
+                      <BsChevronDoubleRight className="iconArrow" />
+                      <div>{sub.SubName}</div>
+                    </div>
+                  )}
+                </div>
+                {isExpandedos ? (
+                  <div className="content">
+                    {sub.SubData.map((sub, i) => {
+                      console.log("Entered");
+                      // Return the element. Also pass key
+                      return (
+                        <div key={i}>
+                          <div
+                            className="rows padinrow"
+                            onClick={(event) =>
+                              handleToolbarMouseDown("operation", event)
+                            }
+                          >
+                            <BsFillFolderFill className="iconArrow" />
+                            {sub.title}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                  )
-               })/*Sub2.map((sub, index) => {
-                <div key={index}>
-                  <div
-                    className="rows padinrow"
-                    onClick={(event) =>
-                      handleToolbarMouseDown("operation", event)
-                    }
-                  >
-                    <BsFillFolderFill className="iconArrow" />
-                    {sub.title}
-                  </div>
-                </div>;
-              })*/}
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div></div>
-          )}
+)})}
         </div>
       );
     }
+
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     const [FileClicked, setFileClicked] = useState(false);
     function FileChanger() {
@@ -1014,21 +1018,20 @@ const Flowchart = forwardRef(
                           {isExpanded ? (
                             <div className="rows">
                               <BsChevronDoubleDown className="iconArrow" />
-                              <div>{NewDAta.projectName}</div>
+                              <div>{NewDAta.ProjectName}</div>
                             </div>
                           ) : (
                             <div className="rows">
                               <BsChevronDoubleRight className="iconArrow" />
-                              <div>{NewDAta.projectName}</div>
+                              <div>{NewDAta.ProjectName}</div>
                             </div>
                           )}
                         </div>
                         <div {...getCollapseProps()}>
                           <div className="content">
                             <InnerCollapsible
-                              projectName={NewDAta.projectName}
-                              Sub1={NewDAta.Sub1}
-                              Sub2={NewDAta.Sub2}
+                              ProjectName={NewDAta.ProjectName}
+                              Subs={NewDAta.Subs}
                             />
                           </div>
                         </div>
