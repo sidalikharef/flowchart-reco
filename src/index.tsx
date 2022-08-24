@@ -1144,7 +1144,8 @@ const Flowchart = forwardRef(
                   )}
                   {statues ? (
                     <div className="pane-content status">
-                      status (resizeable)
+                      status 1... <br />
+                      status 2...
                     </div>
                   ) : (
                     <div></div>
