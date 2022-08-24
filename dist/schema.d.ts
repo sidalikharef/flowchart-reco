@@ -71,6 +71,7 @@ export interface DragMovingInfo {
     moved?: true;
 }
 export interface DragCreatingInfo {
+    data: NodeData;
     type: NodeType;
     x: number;
     y: number;

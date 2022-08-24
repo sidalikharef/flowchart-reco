@@ -491,7 +491,7 @@ const Flowchart = forwardRef(
                 roundTo10(nativeEvent.offsetY - defaultNodeSize.height / 2) /
                 zoom,
               id: +new Date(),
-              title: "new item",
+              title: creatingInfo.data.title,
             };
             onChange?.(
               [...nodes, { type: creatingInfo.type, ...point }],
@@ -815,9 +815,10 @@ const Flowchart = forwardRef(
     );
 
     const handleToolbarMouseDown = useCallback(
-      (type: NodeType, event: React.MouseEvent<HTMLDivElement>) => {
+      (type: NodeType, event: React.MouseEvent<HTMLDivElement>,data:NodeData) => {
         const rect = containerRef.current!.getBoundingClientRect();
         setCreatingInfo({
+          data:data,
           type,
           x: event.clientX - rect.x - (defaultNodeSize.width * zoom) / 2,
           y: event.clientY - rect.y - (defaultNodeSize.height * zoom) / 2,
@@ -903,7 +904,7 @@ const Flowchart = forwardRef(
                           <div
                             className="rows padinrow"
                             onClick={(event) =>
-                              handleToolbarMouseDown("operation", event)
+                              handleToolbarMouseDown("operation", event,sub)
                             }
                           >
                             <BsFillFolderFill className="iconArrow" />
@@ -972,7 +973,7 @@ const Flowchart = forwardRef(
             </div>
             <div className="NavRightSide">
               <div
-                onMouseDown={(event) => handleToolbarMouseDown("start", event)}
+                onMouseDown={(event) => handleToolbarMouseDown("start", event,StartNode)}
               >
                 <svg className={"flowchart-toolbar-item"}>
                   <StartNodes data={StartNode} />
@@ -980,7 +981,7 @@ const Flowchart = forwardRef(
               </div>
 
               <div
-                onMouseDown={(event) => handleToolbarMouseDown("end", event)}
+                onMouseDown={(event) => handleToolbarMouseDown("end", event,EndNode)}
               >
                 <svg className={"flowchart-toolbar-item"}>
                   <EndNodes data={EndNode} />
@@ -988,7 +989,7 @@ const Flowchart = forwardRef(
               </div>
               <div
                 onMouseDown={(event) =>
-                  handleToolbarMouseDown("collector", event)
+                  handleToolbarMouseDown("collector", event,Collector)
                 }
               >
                 <svg className={"flowchart-toolbar-item"}>
@@ -1068,7 +1069,7 @@ const Flowchart = forwardRef(
 
                         <div
                           onMouseDown={(event) =>
-                            handleToolbarMouseDown("operation", event)
+                            handleToolbarMouseDown("operation", event,newNode)
                           }
                         >
                           <svg className={"flowchart-toolbar-item"}>
