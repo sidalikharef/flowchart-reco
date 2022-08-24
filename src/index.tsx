@@ -22,7 +22,7 @@ import {
   NodeType,
   Point,
   SelectingInfo,
-  listData,
+  SubsScheme,
   projectScheme,
 } from "./schema";
 import {
@@ -870,7 +870,7 @@ const Flowchart = forwardRef(
       ],
     };
 
-    function InnerCollapsible({ Subs }: projectScheme) {
+    function InnerCollapsible({ SubName,SubData }: SubsScheme) {
       const [isExpandedos, setExpandedos] = useState(true);
       function handleOnClick() {
         setExpandedos(!isExpandedos);
@@ -878,27 +878,24 @@ const Flowchart = forwardRef(
       }
       return (
         <div>
-          {Subs.map((sub, i) => {
-            console.log("Entered");
-            return(
-            <div key={i}>
+
               <div className="collapsible">
                 <div className="header" onClick={handleOnClick}>
                   {isExpandedos ? (
                     <div className="rows">
                       <BsChevronDoubleDown className="iconArrow" />
-                      <div>{sub.SubName}</div>
+                      <div>{SubName}</div>
                     </div>
                   ) : (
                     <div className="rows">
                       <BsChevronDoubleRight className="iconArrow" />
-                      <div>{sub.SubName}</div>
+                      <div>{SubName}</div>
                     </div>
                   )}
                 </div>
                 {isExpandedos ? (
                   <div className="content">
-                    {sub.SubData.map((sub, i) => {
+                    {SubData.map((sub, i) => {
                       console.log("Entered");
                       // Return the element. Also pass key
                       return (
@@ -920,8 +917,7 @@ const Flowchart = forwardRef(
                   <div></div>
                 )}
               </div>
-            </div>
-)})}
+
         </div>
       );
     }
@@ -1029,10 +1025,13 @@ const Flowchart = forwardRef(
                         </div>
                         <div {...getCollapseProps()}>
                           <div className="content">
-                            <InnerCollapsible
-                              ProjectName={NewDAta.ProjectName}
-                              Subs={NewDAta.Subs}
-                            />
+                            {
+                              NewDAta.Subs.map((sub)=>{
+                                <InnerCollapsible SubName={sub.SubName} SubData={sub.SubData}
+                                />
+                              })
+                            }
+
                           </div>
                         </div>
                       </div>
