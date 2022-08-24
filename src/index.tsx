@@ -1027,8 +1027,10 @@ const Flowchart = forwardRef(
                           <div className="content">
                             {
                               NewDAta.Subs.map((sub)=>{
+                                return(
                                 <InnerCollapsible SubName={sub.SubName} SubData={sub.SubData}
                                 />
+                                )
                               })
                             }
 
