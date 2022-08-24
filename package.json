@@ -1,6 +1,7 @@
 {
   "name": "flowchart-react",
-  "version": "3.6.3",
+  "version": "0.0.1",
+  "author": "Sidali FIverr <sidalikharef@gmail.com>",
   "main": "./dist",
   "license": "MIT",
   "scripts": {
